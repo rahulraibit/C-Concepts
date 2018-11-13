@@ -1,0 +1,31 @@
+Const
+
+1. You use the const keyword to declare a constant field or a constant local. 
+Constant fields and locals aren't variables and may not be modified. Constants can be numbers, Boolean values, strings, or a null reference.
+
+eg: 
+
+const int x = 0;
+public const double gravitationalConstant = 6.673e-11;
+private const string productName = "Visual C#";
+
+2. A constant expression is an expression that can be fully evaluated at compile time. 
+Therefore, the only possible values for constants of reference types are string and a null reference.
+
+3. The static modifier is not allowed in a constant declaration.
+
+A constant can participate in a constant expression, as follows:
+
+eg:
+
+public const int c1 = 5;
+public const int c2 = c1 + 100;
+
+Difference between ReadOnly and Const
+
+The readonly keyword differs from the const keyword. 
+
+- A const field can only be initialized at the declaration of the field. 
+- A readonly field can be initialized either at the declaration or in a constructor. 
+- Therefore, readonly fields can have different values depending on the constructor used. Also, although a const field is a compile-time constant, 
+- the readonly field can be used for run-time constants, as in this line: public static readonly uint l1 = (uint)DateTime.Now.Ticks;

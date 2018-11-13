@@ -1,0 +1,48 @@
+Events are a special kind of multicast delegate that can only be invoked from within the class or struct where they are declared (the publisher class). 
+If other classes or structs subscribe to the event, their event handler methods will be called when the publisher class raises the event
+
+Example:
+
+public class SampleEventArgs
+{
+    public SampleEventArgs(string s) { Text = s; }
+    public String Text { get; } // readonly
+}
+
+public class Publisher
+{
+    // Declare the delegate (if using non-generic pattern).
+    public delegate void SampleEventHandler(object sender, SampleEventArgs e);
+
+    // Declare the event.
+    public event SampleEventHandler SampleEvent;
+
+    // Wrap the event in a protected virtual method
+    // to enable derived classes to raise the event.
+    protected virtual void RaiseSampleEvent()
+    {
+        // Raise the event by using the () operator.
+        if (SampleEvent != null)
+            SampleEvent(this, new SampleEventArgs("Hello"));
+    }
+}
+
+Events enable a class or object to notify other classes or objects when something of interest occurs. 
+The class that sends (or raises) the event is called the publisher and the classes that receive (or handle) the event are called subscribers.
+
+Events have the following properties:
+
+1. The publisher determines when an event is raised; the subscribers determine what action is taken in response to the event.
+
+2. An event can have multiple subscribers. A subscriber can handle multiple events from multiple publishers.
+
+3. Events that have no subscribers are never raised.
+
+4. Events are typically used to signal user actions such as button clicks or menu selections in graphical user interfaces.
+
+5. When an event has multiple subscribers, the event handlers are invoked synchronously when an event is raised. To invoke events asynchronously, see Calling Synchronous Methods Asynchronously.
+
+6. In the .NET Framework class library, events are based on the EventHandler delegate and the EventArgs base class.
+
+
+// TO be continued........
