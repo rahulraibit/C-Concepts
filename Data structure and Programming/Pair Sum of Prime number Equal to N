@@ -1,0 +1,77 @@
+Approach 1.
+
+class Solution {
+    public List<int> primesum(int A) {
+         
+         List<int> result = new List<int>();
+         Dictionary<int, int> primelist = new Dictionary<int, int>();
+         for(int i=2; i< A; i++){
+             if(ISPrime(i)){
+                primelist[i] = i;
+            }
+        }
+        foreach(var k in primelist.Values){
+           var value = 0;
+           var data = primelist.TryGetValue((A-k), out value);
+           if(data) {
+               if((primelist[k] + primelist[A-k]) == A){
+                   result.Add(k);
+                   result.Add(A-k);
+                   break;
+               }
+           }
+           
+        }
+        return result;
+    }
+    public static bool ISPrime(int number){
+            if (number <= 1) return false;
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+
+            var boundary = (int)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 3; i <= boundary; i+=2)
+                if (number % i == 0)
+                    return false;
+            return true;        
+        }
+}
+
+
+Approach 2
+
+
+class Solution {
+    public List<int> primesum(int A) {
+            List<int> result = new List<int>();
+            bool []isPrime=new bool[A + 1]; 
+            getallpair(isPrime, A);
+          for (int i = 0; i < A; i++) 
+          { 
+            if (isPrime[i] && isPrime[A - i]) 
+            { 
+                result.Add(i);
+                result.Add(A-i);
+                break; 
+            } 
+          } 
+          return result;
+    }
+    
+    public void getallpair(bool[] isPrime, int number){
+        isPrime[0] = isPrime[1] = false;
+        for(int i=2; i<= number; i++){
+            isPrime[i] = true;
+        }
+        
+        for(int k = 2; k * k < number; k++){
+            if (isPrime[k] == true) 
+            { 
+                // Update all multiples of p 
+                for (int i = k * 2; i <= number; i += k) 
+                    isPrime[i] = false; 
+            } 
+        }
+    }
+}

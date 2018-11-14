@@ -1,0 +1,118 @@
+IEnumerable is an interface that defines one method GetEnumerator which returns an IEnumerator interface, this in turn allows readonly access to a collection. 
+A collection that implements IEnumerable can be used with a foreach statement.
+
+IEnumerable 
+
+public IEnumerator GetEnumerator();
+
+IEnumerator
+
+public object Current;
+public void Reset();
+public bool MoveNext();
+
+
+Yield
+
+Using yield to define an iterator removes the need for an explicit extra class (the class that holds the state for an enumeration
+
+yield return <expression>;  
+yield break;
+
+You use a yield return statement to return each element one at a time.
+You can use a yield break statement to end the iteration.
+
+Example
+
+public class PowersOf2
+{
+    static void Main()
+    {
+        // Display powers of 2 up to the exponent of 8:
+        foreach (int i in Power(2, 8))
+        {
+            Console.Write("{0} ", i);
+        }
+    }
+
+    public static System.Collections.Generic.IEnumerable<int> Power(int number, int exponent)
+    {
+        int result = 1;
+
+        for (int i = 0; i < exponent; i++)
+        {
+            result = result * number;
+            yield return result;
+        }
+    }
+
+    // Output: 2 4 8 16 32 64 128 256
+}
+
+
+C# History
+
+URL - https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-version-history
+
+C#1.0
+
+OOPS  - Class, Structs, interface
+
+C#2.0
+
+Generics
+Partial types
+Anonymous methods
+Nullable types
+Iterators
+Covariance and contravariance
+
+C#3.0
+
+Auto-implemented properties
+Anonymous types
+Query expressions
+Lambda expressions
+Expression trees
+Extension methods
+Implicitly typed local variables
+Partial methods
+Object and collection initializers
+
+C#4.0
+
+Dynamic binding
+Named/optional arguments
+Generic covariant and contravariant
+Embedded interop types
+
+C#5.0
+
+Asynchronous members
+Caller info attributes
+
+C#6.0
+
+Static imports
+Exception filters
+Auto-property initializers
+Expression bodied members
+Null propagator
+String interpolation
+nameof operator
+Index initializers
+
+C#7.0
+
+Out variables
+Tuples and deconstruction
+Pattern matching
+Local functions
+Expanded expression bodied members
+Ref locals and returns
+
+Discards
+Binary Literals and Digit Separators
+Ref returns and locals
+Throw expressions
+

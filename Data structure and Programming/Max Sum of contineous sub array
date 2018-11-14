@@ -1,0 +1,77 @@
+Approach 1.
+
+Kaden's Algorithm
+
+//Rextester.Program.Main is the entry point for your code. Don't change it.
+//Compiler version 4.0.30319.17929 for Microsoft (R) .NET Framework 4.5
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] input = {-2, -3, 4, -1, -2, 1, 5, -3};
+            Console.WriteLine(MAX_SUBARRAY(input));
+        }
+        
+        // works on kaden's algorithm - dynamic programming paradigm.
+        public static int MAX_SUBARRAY(int[] arr){
+            // step 1. initilize current sum, max sum;
+            var current_sum =0;
+            var max_sum = 0;
+            // step2. loop each element and add in current sum;
+            for(int i=0; i < arr.Length; i++){
+                current_sum = current_sum + arr[i];
+                // if current sum is less then 0 reset to 0;
+                if(current_sum < 0){
+                    current_sum = 0;
+                }
+                // if max sum is less then current sum then copy value;
+                if(current_sum > max_sum){
+                    max_sum = current_sum;
+                }
+            }
+            return max_sum;
+        }
+    }
+}
+
+Approach 2.
+
+/Rextester.Program.Main is the entry point for your code. Don't change it.
+//Compiler version 4.0.30319.17929 for Microsoft (R) .NET Framework 4.5
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace Rextester
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            int[] A = {-2, -3, 4, -1, -2, 1, 5, -3};
+            var currentsum =A[0];
+            var maxsum =A[0];
+            for(int i=1; i < A.Length; i++){
+                currentsum = MAX(A[i], A[i] + currentsum);
+                maxsum  = MAX(currentsum, maxsum);
+            }
+            Console.WriteLine(maxsum);
+    
+        }
+       public static int MAX(int first, int second){
+        return first > second ? first : second;
+        }
+        
+        
+    }
+}

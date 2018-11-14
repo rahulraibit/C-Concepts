@@ -1,0 +1,34 @@
+class Solution {
+    public List<int> plusOne(List<int> A) {
+        
+       var carrydeg = 0;
+        for(int i = A.Count-1; i >= 0; i--) {
+            if(A.Count-1 == i){
+                A[i] = A[i] + 1;
+                if(A[i]/10 > 0){
+                    carrydeg = A[i]/10;
+                    A[i] = A[i]%10;
+                }
+            } else {
+                if(carrydeg > 0){
+                    A[i] = A[i] + carrydeg;
+                    if(A[i]/10 > 0) {
+                        carrydeg = A[i]/10;
+                        A[i] = A[i]%10;
+                    } else {
+                        carrydeg = 0;
+                    }
+                }
+                
+            }
+              if(i == 0 && carrydeg > 0) {
+                    A.Insert(0, carrydeg);
+                }
+            }
+            
+            while(A[0] == 0) {
+                  A.RemoveAt(0);
+            }
+        return A;
+    }
+}

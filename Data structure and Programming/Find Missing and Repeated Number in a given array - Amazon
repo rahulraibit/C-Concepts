@@ -1,0 +1,33 @@
+class Solution {
+    public List<int> repeatedNumber(List<int> A) {
+                
+                List<int> result = new List<int>(); // 1,2,3,5,5  = 64, 16 R1= -1, R2 = -9
+                long S1 = 0;
+                long S2 = 0;
+                long actualS1 = 0;
+                long actualS2 = 0;
+                long n = A.Count;
+                
+                for(int i =0; i <n; i++){
+                    S1 = S1 + (long)A[i];
+                    S2 = S2 + ((long)A[i] * (long)A[i]);
+                }
+                actualS1 = (n*(n+1)/2);
+                actualS2 = ((n*(n+1)*(2*n+1))/6);
+
+                long R1 = actualS1 - S1;
+                long R2 = actualS2 - S2;
+                
+                long d = R2/R1;
+
+                var x = (int)((d + R1)/2);
+                var y = (int)((d - R1)/2);
+                
+                result.Add(y);
+                result.Add(x);
+               
+                
+                return result;
+        
+    }
+}

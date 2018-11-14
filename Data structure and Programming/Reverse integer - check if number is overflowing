@@ -1,0 +1,24 @@
+class Solution {
+    public int reverse(int A) {
+        int reverse = 0;
+        int B = Math.Abs(A);
+        if(B > int.MaxValue){
+            return 0;
+        }
+        else {
+            while(B>0){
+                try {
+                // will through error if value is overflowing
+                checked{
+                    reverse = reverse*10 + B%10;
+                    B = B/10;
+                }
+                }
+                catch(Exception ex){
+                    return 0;
+                }
+            }
+            return A<0 ? -reverse : reverse;
+        }
+    }
+}

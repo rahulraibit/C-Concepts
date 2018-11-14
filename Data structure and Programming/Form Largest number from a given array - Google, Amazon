@@ -1,0 +1,61 @@
+class Solution {
+      public string largestNumber(List<int> A) {
+            quicksort(A, 0, A.Count-1);
+            var result = "";
+            bool isAll0 = true;
+            for(int i=0; i< A.Count; i++){
+                if(A[i] > 0){
+                result = result + A[i];
+                isAll0 = false;
+                }
+            }
+            return !isAll0 ? result : "0";
+        }
+
+        public void quicksort(List<int> arr, int start, int end){
+            if(start < end){
+             int pindex = partition(arr, start, end);
+                quicksort(arr, start, pindex-1);
+                quicksort(arr, pindex+1, end);
+            }
+            
+        }
+        
+        public int partition(List<int> arr, int start, int end){
+            // assume pivot element will be last of the array.
+            int pivot = arr[end];
+            // pivot index will be start
+            int index = start;
+            // iterate from start to end and swap pivote index element if current element less then pivot element.
+            // swap and increment pivote index.
+            for(int i= start; i< end; i++){
+                if(getMax(arr[i],pivot)){
+                    swap(arr, i, index);
+                    index++;
+                }
+            }
+            // in last swap pindex with pivot element.
+            swap(arr, end, index);
+            return index;
+        }
+    
+        public bool getMax(long x, long y){
+            var firstNumber = (long)(x* Math.Pow(10, getnumberLength(y)) + y);
+            var secondNumber = (long)(y * Math.Pow(10, getnumberLength(x)) + x);
+            return firstNumber >= secondNumber  ? true : false;
+        }
+        public int getnumberLength(long numb){
+                int i = 0;
+                while(numb > 0){
+                    numb = numb/10;
+                    i++;
+                }
+                return i;
+        }
+        public void swap(List<int> arr, int src, int des){
+            var temp = arr[src];
+            arr[src] = arr[des];
+            arr[des] = temp;
+        }    
+        
+}

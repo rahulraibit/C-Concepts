@@ -1,0 +1,42 @@
+lass Solution {
+    public List<int> maxset(List<int> A) {
+       
+      Dictionary<int, List<int>> map = new Dictionary<int, List<int>>();
+      int key = 0;
+      List<int> values = new List<int>();
+      for(int i =0; i < A.Count; i++){
+          if(A[i] < 0 && values.Count > 0){
+              map.Add(key, values);
+              key = key + 1;
+              values = new List<int>();
+          }
+          
+          if(A[i] >= 0){
+              values.Add(A[i]);
+          }
+         
+      }
+      if(values.Count > 0){
+        map.Add(key, values);
+      }
+      var maxset = new List<int>();
+      var currentset = new List<int>();
+      long maxsum = 0 ;
+      long currentsum = 0;
+      for(int j = 0; j < map.Count; j++){
+          currentsum = 0;
+          currentset = map[j];
+          for(int k =0; k < currentset.Count; k++){
+              currentsum = (long)currentsum + currentset[k];
+          }
+          if(currentsum > maxsum){
+              maxsum = currentsum;
+              maxset = currentset;
+          }
+          if(currentsum == maxsum){
+              maxset = currentset.Count > maxset.Count ? currentset : maxset;
+          }
+      }
+      return maxset;
+    }
+}
