@@ -1,3 +1,186 @@
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces. 
 It lets you compose complex UIs from small and isolated pieces of code called “components”.
 
+class ShoppingList extends React.Component {
+  render() {
+    return (
+      <div className="shopping-list">
+        <h1>Shopping List for {this.props.name}</h1>
+        <ul>
+          <li>Instagram</li>
+          <li>WhatsApp</li>
+          <li>Oculus</li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+By calling this.setState = When you call setState in a component, React automatically updates the child components inside of it too.
+
+Why Immutability Is Important ? 
+
+Complex Features Become Simple
+Detecting Changes
+Determining When to Re-render in React
+
+
+In React, function components are a simpler way to write components that only contain a render
+
+function Square(props) {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
+}
+
+React doesn’t force you to use the ES6 class syntax. If you prefer to avoid it, you may use the create-react-class
+
+Life Cycle
+
+Mounting
+These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+
+These methods are considered legacy and you should avoid them in new code:
+
+UNSAFE_componentWillMount()
+
+Updating
+An update can be caused by changes to props or state. These methods are called in the following order when a component is being re-rendered:
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+
+UNSAFE_componentWillUpdate()
+UNSAFE_componentWillReceiveProps()
+
+Unmounting
+
+This method is called when a component is being removed from the DOM:
+
+componentWillUnmount()
+
+Error Handling
+
+These methods are called when there is an error during rendering, in a lifecycle method, or in the constructor of any child component.
+
+static getDerivedStateFromError()
+componentDidCatch()
+
+Each component also provides some other APIs:
+
+setState()
+forceUpdate()
+
+Class Properties
+
+defaultProps
+displayName
+
+Instance Properties
+
+props
+state
+
+Render Methods support one of the following
+
+When called, it should examine this.props and this.state and return one of the following types:
+
+React elements. Typically created via JSX. For example, <div /> and <MyComponent /> are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+
+Arrays and fragments. Let you return multiple elements from render. See the documentation on fragments for more details.
+
+Portals. Let you render children into a different DOM subtree. See the documentation on portals for more details.
+
+String and numbers. These are rendered as text nodes in the DOM.
+
+Booleans or null. Render nothing. (Mostly exists to support return test && <Child /> pattern, where test is boolean.)
+
+The render() function should be pure, meaning that it does not modify component state, it returns the same result each time it’s invoked, and it does not directly interact with the browser.
+
+constructor()
+
+If you don’t initialize state and you don’t bind methods, you don’t need to implement a constructor for your React component.
+
+The constructor for a React component is called before it is mounted. When implementing the constructor for a React.Component subclass, you should call super(props) before any other statement. Otherwise, this.props will be undefined in the constructor, which can lead to bugs.
+
+Typically, in React constructors are only used for two purposes:
+
+Initializing local state by assigning an object to this.state.
+Binding event handler methods to an instance.
+
+Avoid copying props into state! This is a common mistake:
+constructor(props) {
+ super(props);
+ // Don't do this!
+ this.state = { color: props.color };
+}
+
+componentDidMount()
+
+componentDidMount() is invoked immediately after a component is mounted (inserted into the tree). Initialization that requires DOM nodes should go here. If you need to load data from a remote endpoint, this is a good place to instantiate the network request
+
+You may call setState() immediately in componentDidMount(). It will trigger an extra rendering, but it will happen before the browser updates the screen. This guarantees that even though the render() will be called twice in this case, the user won’t see the intermediate state
+
+componentDidUpdate()
+
+componentDidUpdate(prevProps, prevState, snapshot)
+
+componentDidUpdate() is invoked immediately after updating occurs. This method is not called for the initial render
+
+You may call setState() immediately in componentDidUpdate() but note that it must be wrapped in a condition
+
+componentWillUnmount()
+
+
+Rarely Used Lifecycle Methods
+
+shouldComponentUpdate()
+
+shouldComponentUpdate(nextProps, nextState)
+
+shouldComponentUpdate() is invoked before rendering when new props or state are being received. Defaults to true
+
+
+Test Utilities
+
+ReactTestUtils makes it easy to test React components in the testing framework of your choice. At Facebook we use Jest for painless JavaScript testing. Learn how to get started with Jest through the Jest website’s React Tutorial
+
+
+irbnb has released a testing utility called Enzyme, which makes it easy to assert, manipulate, and traverse your React Components’ output. If you’re deciding on a unit testing utility to use together with Jest, or any other test runner, it’s worth checking out: http://airbnb.io/enzyme/
+
+Alternatively, there is another testing utility called react-testing-library designed to enable and encourage writing tests that use your components as the end users use them. It also works with any test runner: https://git.io/react-testing-library
+
+https://jestjs.io/docs/en/tutorial-react.html#content
+
+Refs
+
+There are a few good use cases for refs:
+
+Managing focus, text selection, or media playback.
+Triggering imperative animations.
+Integrating with third-party DOM libraries.
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+  render() {
+    return <div ref={this.myRef} />;
+  }
+}
+
+const node = this.myRef.current;
+
+
+
+
