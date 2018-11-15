@@ -1,10 +1,10 @@
-# Singlaton Design pattern
+# Singleton Design pattern
 
 It ensure that only one instance will be created for the class and will be used across the application.
 
- - steps to create singlaton class
+ - steps to create singleton class
 
- 1. Singlaton class should be sealed, So that no other class can able to inherit it.
+ 1. singleton class should be sealed, So that no other class can able to inherit it.
  2. Constructor should be private so that new keyword can not be used.
  3. Create a static method which will return the instance of the class.
  4. Sealed also ensure that even nested class inside the singleton class will not able to inherit the upper class.
