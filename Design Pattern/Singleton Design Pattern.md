@@ -88,16 +88,16 @@ namespace SingletonDemo
 
 ```
 
-*** Lazy vs Eager Initilization ***
+***Lazy vs Eager Initilization***
 
-*** Lazy Loading ***
+***Lazy Loading***
 
 1. improves the performance.
 2. avoid unnecessary load till the point object is accessed.
 3. Reduces the memory footprint on the start up.
 4. faster application load.
 
-*** Non Lazy Or Eager Loading ***
+***Non Lazy Or Eager Loading***
 
 1. Pre initiation of the object.
 2. commonly used in lower memory footprints.
@@ -137,7 +137,7 @@ new Lazy<Singleton>(()=>new Singleton());
 
 ```
 
-*** Differences between Singleton and static classes ***
+***Differences between Singleton and static classes***
 
 1. Static is a keyword and Singleton is a design pattern
 2. Static classes can contain only static members
@@ -151,7 +151,7 @@ new Lazy<Singleton>(()=>new Singleton());
 Static class example - Temperature Converter 
 We are pretty sure that the formulas for foreign heat to Celsius conversion and vice versa will not change at all and hence we can use static classes with static methods that does the conversion for us. Please refer to the below code for more details.
 
-*** Real world usage of Singleton : Listed are few real world scenarios for singleton usage ***
+***Real world usage of Singleton : Listed are few real world scenarios for singleton usage***
 
 1. Exception/Information logging
 2. Connection pool management 
