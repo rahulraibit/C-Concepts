@@ -1,0 +1,7 @@
+# Configure App Service Web Apps with Application Gateway
+
+https://docs.microsoft.com/en-us/azure/application-gateway/create-web-app
+
+Note : Status Code range should be 200 - 500
+If not then you may get 502 for secure WebAPIs project which is not listed in the Azure documentation.
+
