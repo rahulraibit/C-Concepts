@@ -15,14 +15,17 @@ These are the two common ways to create objects
 1. Object Literals
 The most common and, indeed, the easiest way to create objects is with the object literal described here
 
-`var mango = {
+```
+var mango = {
 color: "yellow",
 shape: "round",
 sweetness: 8,
 
 howSweetAmI: function () {
 console.log("Hmm Hmm Good");
-}`
+}
+
+```
 
 2. Object Constructor
 The second most common way to create objects is with Object constructor. A constructor is a function used for initializing new objects, and you use the new keyword to call the constructor.
