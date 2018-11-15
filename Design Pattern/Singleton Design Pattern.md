@@ -62,11 +62,6 @@ namespace SingletonDemo
         }
     }
 
-    ```
-
-
-```
-
 namespace SingletonDemo
 {
     class Program
