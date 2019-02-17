@@ -1,0 +1,81 @@
+Learning
+
+Java change code java
+
+Package - Nothing but the folder which we use to group common functionality. Something like namespaces
+Scanner = it is used to take input from the user
+
+PrintWriter = to write the into the file
+
+BufferReader = to read the data of the file
+FileReader = To read file
+
+Two way to create thread
+
+Use runnable interface
+Use subclass of the thread class and create object of it
+
+In both methods the run() method should be implemented
+
+Synchronised = Keyword is used to provide lock on the variable. One thread can used at a time.
+Thread.join() = is used to wait for until thread completion or operation.
+
+JavaFX, Spring Boot are the framework for building rich and standalone application
+
+SprintBoot
+
+It is the small convention over configuration project for quick startup application which underneath use spring framework.
+
+Maven - It is like nuget server which is used to resolve the dependencies.
+Pom.xml file is the root file for maven which has the configuration  for you project.
+
+Group id is nothing but uniquely identified project name. (Published nuget package name)
+Artifactid is the jar name or project name.  
+
+Parent tag in pom xml tells the parent project from where the current project will inherit the configurations.
+Dependencies tags tell - what are the dependencies for the project.
+Properties - tells what are the specifies jars you want to use and override.
+
+For spring boot 
+
+We have 
+
+<parent>
+
+<groupId>org.springframework.boot</groupId>
+
+<artifactId>spring-boot-starter-parent</artifactId>
+
+<version>1.5.3.RELEASE</version>
+
+</parent>
+
+
+
+<dependencies>
+
+<dependency>
+
+<groupId>org.springframework.boot</groupId>
+
+<artifactId>spring-boot-starter-web</artifactId>
+
+</dependency>
+
+</dependencies>
+
+
+
+Also with spring boot tomcat comes by default.
+
+There will be one main method which will be used to tell as the starting point of the application which will be decorate
+
+With @SpringBootApplication
+
+By default for the same groupid all the component will be scan and serve by the spring boot.
+
+Also, servlet is nothing but the controllers in the .NET
+
+@ annotation is the way to tell which class is the controller and which is service type.
+
+In spring service classes are the singleton type.

@@ -68,3 +68,20 @@ Strassen's gave formula to reduce some performnace but still time complexity is 
 
 It takes each input and check feasiblity and then add in the solution list.
 In this case we test all the given input and find the best solutions on the slection basis.
+
+
+*** Rules of magic square ***
+
+matrix of size n is x = magic number is n(n^2+1)/2
+
+by row, column, diagonla all sum sholud be same ie magic constant x.
+
+
+rules to determine position of each number 
+
+1.  1 stores at (n/2, n-1);
+2.  next number stores at i-1, j+1 and 
+        if i become -1 then reset to n-1
+        if j is n then reset to 0
+3. if at (i,j) number exist then (i+1, j-2)
+4. if i, j position is (-1, n) => (0, n-2)
